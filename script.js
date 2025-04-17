@@ -1,43 +1,30 @@
-
-const post = [
-    {title:"Post one",body:"This is post one"},
-    {title:"Post two", body:"This is post two"}
+//refreshing my memory
+let posts = [
+    {title:"Post one", body:"This is Post One"},
+    {title:"Post Two", body:"This is Post Two"},
+    {title:"Post Three", body:"This is Post Three"},
+    {title:"Post Four", body:"This is Post Four"},
 ];
 
-function getPost(){
+const getPosts = ()=>{
     setTimeout(
         ()=>{
-           post.map((p,index)=>{
-            console.log(p)
-           })
+            let output = '';
+            posts.map((p,index)=>{
+                output += `<li> ${p.title}</>`
+            })
+            document.body.innerHTML = output
         },1000
-    )
+    )  
 }
-    getPost();
 
-    let names = ["Taiwo", "Kehinde"];
+function createPost(post){
+   setTimeout(
+    ()=>{
+        posts.push(post)
+    },2000
+   ) 
+}
 
-    names.map((name)=> console.log(name))
-
-    const sayHi = () => {
-        console.log("Hey!");
-      }
-      
-
-    setTimeout(() => {
-        console.log("Waited 1 second");
-      }, 1000);
-      
-
-      const fakeAPI = new Promise((resolve, reject) => {
-        setTimeout(() => resolve("Data loaded"), 2000);
-      });
-      
-      fakeAPI.then((data) => console.log(data));
-
-      async function getData() {
-        const response = await fakeAPI;
-        console.log(response);
-      }
-      getData();
-      
+getPosts();
+createPost({title:"Post five", body:"This is post five"});
