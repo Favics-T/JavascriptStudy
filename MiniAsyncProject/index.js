@@ -33,7 +33,7 @@ usersList.innerHTML = '<li>Loading...</li>';
 // const usersList = document.getElementById('usersList');
 // usersList.innerHTML = '<li>Loading...</li>';
 
-// 🧱 Reusable render function
+//  Reusable render function
 function renderUsers(users){
     const usersList = document.getElementById('usersList');
     usersList.innerHTML = '';
