@@ -1,14 +1,22 @@
-
-
-// const usersList = document.getElementById('usersList');
-// usersList.innerHTML = '<li>Loading...</li>';
 let allUsers = [];
+
+function renderUsers(users){
+    const usersList = document.getElementById('usersList');
+    usersList.innerHTML = '';
+
+    users.forEach(user => {
+        let li = document.createElement('li');
+        li.textContent = `${user.name} - ${user.email}`;
+        usersList.appendChild(li);
+    });
+}
+
 
 async function fetchUser(){
     try{
 
         const usersList = document.getElementById('usersList');
-usersList.innerHTML = '<li>Loading...</li>';
+        usersList.innerHTML = '<li>Loading...</li>';
 
         const res = await fetch('https://jsonplaceholder.typicode.com/users');
         const data = await res.json();
@@ -16,22 +24,18 @@ usersList.innerHTML = '<li>Loading...</li>';
         allUsers = data;  // Store all users for filtering
         renderUsers(allUsers); //show all initially
          
-         usersList.innerHTML = ''; // Clears "Loading..."
-       data.map((user)=>{
-        let li = document.createElement('li');
-        li.textContent = `${user.name} - ${user.email}`;
-        usersList.appendChild(li);
-       })
-       
-
-
-    }
+        //  usersList.innerHTML = ''; // Clears "Loading..."
+    //    data.map((user)=>{
+    //     let li = document.createElement('li');
+    //     li.textContent = `${user.name} - ${user.email}`;
+    //     usersList.appendChild(li);
+    //    })
+      }
     catch(error){
-            console.error("error fetching data")
+            console.error("error fetching data");
+            usersList.textContent ='Error loading data'
     }
 }
-// const usersList = document.getElementById('usersList');
-// usersList.innerHTML = '<li>Loading...</li>';
 
 //  Reusable render function
 function renderUsers(users){
