@@ -7,3 +7,7 @@
     background: red;
     cursor: pointer;
 }
+.list {
+    display: flex;
+    gap: 100px;
+}

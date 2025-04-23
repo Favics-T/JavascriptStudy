@@ -61,8 +61,6 @@ searchInput.addEventListener('input', () => {
 
     const usersList = document.getElementById('usersList');
     usersList.innerHTML = ''; // clear previous list
-
-
     if(filteredUsers.length === 0){
        
         
@@ -74,6 +72,21 @@ searchInput.addEventListener('input', () => {
         renderUsers(filteredUsers);
     } 
 });
+
+searchInput.addEventListener('input', ()=>{
+    let emailSearch = searchInput.toLowerCase().value;
+    const filteredEmail = allUsers.filter((emails)=>{
+        emails.email.toLowerCase().includes(emailSearch);
+    })
+    if(filteredEmail === 0){
+        let p = document.createElement('p');
+        p.textContent = "User Email not found";
+        usersList.appendChild('p');
+    }
+    else
+
+    renderUsers(filteredEmail);
+})
 
 
 const refreshBtn = document.getElementById('refreshBtn');
